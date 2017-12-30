@@ -5,8 +5,8 @@
 # catalog-license undef
 # catalog-version undef
 Name:		texlive-textglos
-Version:	20131009
-Release:	9
+Version:	20170414
+Release:	1
 Summary:	TeXLive textglos package
 Group:		Publishing
 URL:		http://tug.org/texlive
