@@ -5,7 +5,7 @@
 # catalog-license undef
 # catalog-version undef
 Name:		texlive-textglos
-Version:	20170414
+Version:	1.0
 Release:	1
 Summary:	TeXLive textglos package
 Group:		Publishing
