@@ -1,6 +1,6 @@
 Name:		texlive-textglos
 Version:	30788
-Release:	1
+Release:	2
 Summary:	TeXLive textglos package
 Group:		Publishing
 URL:		http://tug.org/texlive
