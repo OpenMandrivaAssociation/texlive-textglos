@@ -1,46 +1,24 @@
-Name:		texlive-textglos
-Version:	30788
-Release:	2
-Summary:	TeXLive textglos package
+%global tl_name textglos
+%global tl_revision 30788
+
+Name:		texlive-%{tl_name}
+Epoch:		1
+Version:	1.0
+Release:	%{tl_revision}.1
+Summary:	Typeset and index linguistic gloss abbreviations
 Group:		Publishing
-URL:		https://tug.org/texlive
-License:	http://www.tug.org/texlive/LICENSE.TL
-Source0:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/textglos.r%{version}.tar.xz
-Source1:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/textglos.doc.r%{version}.tar.xz
-Source2:	http://mirrors.ctan.org/systems/texlive/tlnet/archive/textglos.source.r%{version}.tar.xz
+URL:		https://www.ctan.org/tex-archive/macros/latex/contrib/textglos
+License:	lppl1.3
+Source0:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/textglos.r%{tl_revision}.tar.xz
+Source1:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/textglos.doc.r%{tl_revision}.tar.xz
+Source2:	https://mirrors.ctan.org/systems/texlive/tlnet/archive/textglos.source.r%{tl_revision}.tar.xz
 BuildArch:	noarch
-BuildRequires:	texlive-tlpkg
-Requires(pre):	texlive-tlpkg
-Requires(post):	texlive-kpathsea
+BuildSystem:	texlive
+Provides:	texlive(%{tl_name}) = %{tl_revision}
 
 %description
-TeXLive textglos package.
+The package provides a set of macros for in-line linguistic examples (as
+opposed to interlinear glossing, set apart from the main text). It
+prevents hyphenated examples from breaking across lines and consistently
+formats phonemic examples, orthographic examples, and more.
 
-%post
-%{_sbindir}/texlive.post
-
-%postun
-if [ $1 -eq 0 ]; then
-	%{_sbindir}/texlive.post
-fi
-
-#-----------------------------------------------------------------------
-%files
-%{_texmfdistdir}/tex/latex/textglos/textglos.sty
-%doc %{_texmfdistdir}/doc/latex/textglos/README
-%doc %{_texmfdistdir}/doc/latex/textglos/README.txt
-%doc %{_texmfdistdir}/doc/latex/textglos/textglos.pdf
-#- source
-%doc %{_texmfdistdir}/source/latex/textglos/textglos.dtx
-%doc %{_texmfdistdir}/source/latex/textglos/textglos.ins
-
-#-----------------------------------------------------------------------
-%prep
-%setup -c -a1 -a2
-%autopatch -p1
-
-%build
-
-%install
-mkdir -p %{buildroot}%{_texmfdistdir}
-cp -fpar tex doc source %{buildroot}%{_texmfdistdir}
